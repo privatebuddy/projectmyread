@@ -2,7 +2,20 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 class Book extends Component {
     static propTypes = {
-        onChangeShelf: PropTypes.func.isRequired
+        onChangeShelf: PropTypes.func.isRequired,
+    }
+
+    loadBookImageData = (data) => {
+        if(data.imageLinks)
+        {
+            return data.imageLinks.thumbnail;
+        }else
+        {
+        }
+    }
+
+    loadBookAuthors = (data) => {
+
     }
 
     render() {
@@ -13,7 +26,7 @@ class Book extends Component {
                     <div className="book-cover" style={{
                         width: 128,
                         height: 192,
-                        backgroundImage: `url("${bookData.imageLinks.thumbnail}")`
+                        backgroundImage: `url("${this.loadBookImageData(bookData)}")`
                     }}></div>
                     <div className="book-shelf-changer">
                         <select value={bookData.shelf} onChange={(event) => {
@@ -30,9 +43,9 @@ class Book extends Component {
                 <div className="book-authors">
                     {
                         bookData.authors && bookData.authors.map((author) =>
-                        <div key={author}>
-                            {author}
-                        </div>)
+                            <div key={author}>
+                                {author}
+                            </div>)
                     }
                 </div>
             </div>
