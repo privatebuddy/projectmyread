@@ -30,6 +30,11 @@ body, .app {
   padding: 0 10px 20px;
 }
 
+.book-not-found {
+  padding: 50px 0px 0px 0px;
+  text-align: center;
+}
+
 @media (min-width: 600px) {
   .bookshelf {
     padding: 0 20px 40px;
